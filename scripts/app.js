@@ -9,8 +9,13 @@ let playerShouldMove = false
 
 function movePlayer() {
   squares.forEach(square => square.classList.remove('player'))
+  if (squares[playerIndex].classList.contains('food')) {
+    squares[playerIndex].classList.remove('food')
+    // you would wanna update the score the snake length etc
+    // generate a new food in a random spot
+  }
   squares[playerIndex].classList.add('player')
-  squares[foodIndex].classList.add('food')
+  // squares[foodIndex].classList.add('food')
   // console.log(`player should move position ${playerIndex}`)
 }
 
