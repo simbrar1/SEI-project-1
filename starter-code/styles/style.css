@@ -19,7 +19,6 @@ div.grid {
   height: 800px;
   display: flex;
   flex-wrap: wrap;
-  color: white;
   background-image: url('../assets/LK!.jpeg');
 }
 

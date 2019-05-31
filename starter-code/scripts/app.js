@@ -1,35 +1,41 @@
 const width = 10
 const squares = []
 let playerIndex = Math.floor(width * width / 2)
-const foodIndex = Math.floor(Math.random() * width * width)
-// let futureIndex = 0
-let direction = null
-// use math.floor for player to start on the 12th sq. Or just put 0 for them to start at 0
-let playerShouldMove = false
+const foodIndex = 5
+// use math.floo for player to start on the 12th sq. Or just put 0 for them to start at 0
 
 function movePlayer() {
   squares.forEach(square => square.classList.remove('player'))
   squares[playerIndex].classList.add('player')
   squares[foodIndex].classList.add('food')
-  // console.log(`player should move position ${playerIndex}`)
+
+  // console.log(`player hsowuld move position ${playerIndex}`)
 }
 
 function handleKeyDown(e) {
-  //console.log(e.keyCode)
-  playerShouldMove = true
+  let playerShouldMove = true
+  console.log(e.keyCode)
 
-  switch(e.key) {
-    case 'ArrowRight':
-      direction = 'right'
+  switch(e.keyCode) {
+    case 39:
+      if (playerIndex % width < width - 1) {
+        playerIndex++
+      }
       break
-    case 'ArrowLeft':
-      direction = 'left'
+    case 37:
+      if (playerIndex % width > 0) {
+        playerIndex--
+      }
       break
-    case 'ArrowUp':
-      direction = 'up'
+    case 38:
+      if (playerIndex - width >= 0) {
+        playerIndex -= width
+      }
       break
-    case 'ArrowDown':
-      direction = 'down'
+    case 40:
+      if (playerIndex + width < width * width) {
+        playerIndex += width
+      }
       break
     default:
       playerShouldMove = false
@@ -37,46 +43,18 @@ function handleKeyDown(e) {
   if (playerShouldMove) movePlayer()
 }
 
-function handleDirection() {
-  switch(direction) {
-    case 'right':
-      if (playerIndex % width < width - 1) {
-        playerIndex++
-      }
-      break
-    case 'left':
-      if (playerIndex % width > 0) {
-        playerIndex--
-      }
-      break
-    case 'up':
-      if (playerIndex - width >= 0) {
-        playerIndex -= width
-      }
-      break
-    case 'down':
-      if (playerIndex + width < width * width) {
-        playerIndex += width
-      }
-      break
-  }
-  if (playerShouldMove) movePlayer()
-}
-
-setInterval(handleDirection, 500)
-
-
 function init() {
+  //  our code goes here
+
   //get hold of that parent grid div
   const grid = document.querySelector('.grid')
   console.log(grid)
 
-  // used a for loop to fill my grid with individual squares, as many as the width times the width
+  //used a for loop to fill my grid with individual squares, as many as the width times the width
   for (let i = 0; i < width * width; i++) {
     const square = document.createElement('div')
     square.classList.add('grid-item')
-    square.innerHTML = i
-    // square.innerHTML = `${i}, ${i % width}`
+    // square.innerHTML = i
     squares.push(square)
     grid.append(square)
 
