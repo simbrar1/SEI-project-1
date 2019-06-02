@@ -42,3 +42,24 @@ div.grid-item.food {
   background-repeat: no-repeat;
   background-size: contain;
 }
+
+
+.score {
+  margin: 100px;
+  border: 2px solid white;
+  width: 200px;
+  margin: 0;
+  font-size: 20px;
+  padding: 0;
+  text-align: center;
+  position: relative;
+}
+
+#playerScore {
+  color: white;
+
+}
+
+#player-label {
+  color: white;
+}

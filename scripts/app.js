@@ -5,7 +5,10 @@ const foodIndex = Math.floor(Math.random() * width * width)
 let direction = null
 // use math.floor for player to start on the 12th sq. Or just put 0 for them to start at 0
 let playerShouldMove = false
-const score = 0
+let playerScore = 0
+const playerScoreBoard = document.querySelector('#playerScore')
+const result = document.querySelector('.result')
+
 
 function movePlayer() {
   squares.forEach(square => square.classList.remove('player'))
@@ -13,12 +16,10 @@ function movePlayer() {
     squares[playerIndex].classList.remove('food')
   }
   squares[playerIndex].classList.add('player')
+  playerScore++
+  playerScoreBoard.innerHTML = playerScore
+  result.innerHTML = 'Keep going ' + playerIndex
 }
-
-// you need a function that will select a random square on your board and add the food class to it. The trickly part is when you need to call that function. It should go inside the if statement we wrote to know the previous food has been eaten.
-//
-// If you look at the way we selected a random choice in Rock paper scissors that should help
-// But instead you will need to pick a random whole number between 0 and and the amount of squres on your board (the width time the width)
 
 function handleKeyDown(e) {
   //console.log(e.keyCode)
