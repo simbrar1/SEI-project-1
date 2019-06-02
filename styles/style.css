@@ -16,8 +16,8 @@ body {
 }
 
 div.grid {
-  width: 400px;
-  height: 400px;
+  width: 800px;
+  height: 800px;
   display: flex;
   flex-wrap: wrap;
   color: white;
@@ -44,6 +44,7 @@ div.grid-item.food {
 }
 
 .score {
+  flex-direction: row;
   margin: 100px;
   border: 2px solid white;
   width: 150px;

@@ -1,8 +1,6 @@
-const width = 5
+const width = 10
 const squares = []
 let playerIndex = Math.floor(width * width / 2)
-// const foodIndex = Math.floor(Math.random() * width * width)
-// const foodIndexTwo = Math.floor(Math.random() * width * width)
 let direction = null
 // use math.floor for player to start on the 12th sq. Or just put 0 for them to start at 0
 let playerShouldMove = false
@@ -15,19 +13,33 @@ function movePlayer() {
   squares.forEach(square => square.classList.remove('player'))
   if (squares[playerIndex].classList.contains('food')) {
     squares[playerIndex].classList.remove('food')
-    makeFood()
+    newFood()
   }
   squares[playerIndex].classList.add('player')
-
-  // playerScore++
-  // playerScoreBoard.innerHTML = playerScore
-  // result.innerHTML = 'Keep going' + playerIndex
+  snakeBigger(playerIndex)
+  score()
 }
 
-function makeFood() {
+function newFood() {
   return squares[Math.floor(Math.random() * width * width)].classList.add('food')
 }
 
+function score() {
+  if (squares[playerIndex].classList.contains('food'))
+    playerScore++
+  playerScoreBoard.innerHTML = playerScore
+  result.innerHTML
+}
+
+
+function snakeBigger(playerIndex) {
+  return squares.forEach((square) =>{
+    console.log(typeof square)
+    if (square.className === 'grid-item player') {
+      // square[playerIndex+1].classList.add('player')
+    }
+  })
+}
 
 function handleKeyDown(e) {
   //console.log(e.keyCode)
@@ -95,7 +107,7 @@ function init() {
 
   }
   squares[playerIndex].classList.add('player')
-  makeFood()
+  newFood()
   window.addEventListener('keydown', handleKeyDown)
 
 }
