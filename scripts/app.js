@@ -31,7 +31,6 @@ function score() {
   result.innerHTML
 }
 
-
 function snakeBigger(playerIndex) {
   return squares.forEach((square) =>{
     console.log(typeof square)
