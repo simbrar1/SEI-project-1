@@ -12,15 +12,15 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  background-image: url('../assets/LLKK.jpg');
 }
 
 div.grid {
-  width: 800px;
-  height: 800px;
+  width: 400px;
+  height: 400px;
   display: flex;
   flex-wrap: wrap;
   color: white;
-  background-image: url('../assets/LK!.jpeg');
 }
 
 div.grid-item {

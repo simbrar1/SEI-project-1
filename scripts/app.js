@@ -1,28 +1,28 @@
-const width = 10
+const width = 5
 const squares = []
 let playerIndex = Math.floor(width * width / 2)
 const foodIndex = Math.floor(Math.random() * width * width)
-// let futureIndex = 0
 let direction = null
 // use math.floor for player to start on the 12th sq. Or just put 0 for them to start at 0
 let playerShouldMove = false
+const score = 0
 
 function movePlayer() {
   squares.forEach(square => square.classList.remove('player'))
   if (squares[playerIndex].classList.contains('food')) {
     squares[playerIndex].classList.remove('food')
-    // you would wanna update the score the snake length etc
-    // generate a new food in a random spot
   }
   squares[playerIndex].classList.add('player')
-  // squares[foodIndex].classList.add('food')
-  // console.log(`player should move position ${playerIndex}`)
 }
+
+// you need a function that will select a random square on your board and add the food class to it. The trickly part is when you need to call that function. It should go inside the if statement we wrote to know the previous food has been eaten.
+//
+// If you look at the way we selected a random choice in Rock paper scissors that should help
+// But instead you will need to pick a random whole number between 0 and and the amount of squres on your board (the width time the width)
 
 function handleKeyDown(e) {
   //console.log(e.keyCode)
   playerShouldMove = true
-
   switch(e.key) {
     case 'ArrowRight':
       direction = 'right'
@@ -70,7 +70,6 @@ function handleDirection() {
 
 setInterval(handleDirection, 500)
 
-
 function init() {
   //get hold of that parent grid div
   const grid = document.querySelector('.grid')
@@ -91,5 +90,6 @@ function init() {
   window.addEventListener('keydown', handleKeyDown)
 
 }
+
 
 window.addEventListener('DOMContentLoaded', init)
