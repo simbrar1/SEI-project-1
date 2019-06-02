@@ -43,21 +43,18 @@ div.grid-item.food {
   background-size: contain;
 }
 
-
 .score {
   margin: 100px;
   border: 2px solid white;
-  width: 200px;
+  width: 150px;
   margin: 0;
   font-size: 20px;
-  padding: 0;
   text-align: center;
   position: relative;
 }
 
 #playerScore {
   color: white;
-
 }
 
 #player-label {
