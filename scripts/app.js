@@ -7,13 +7,7 @@ let playerShouldMove = false
 let playerScore = 0
 let playerScoreBoard = null
 let result = null
-
-const randomFood = document.querySelector('.randomFood')[
-  '../asset/antelope.png'
-  ''
-]
-
-
+// let randomFood = null
 
 function movePlayer() {
   squares.forEach(square => square.classList.remove('player'))
@@ -27,13 +21,17 @@ function movePlayer() {
 
 }
 
-function newFood() {
-  return squares[Math.floor(Math.random() * width * width)].classList.add('food')
+function changePic() {
+  const foodPics = ['food-one', 'food-two', 'food-three', 'food-four', 'food-five']
+  return foodPics[Math.floor(Math.random() * foodPics.length)]
 }
 
-function changePic(){
-  return randomFood[Math.floor(Math.random() * randomFood.length)]
+function newFood() {
+  const imageUrl = changePic()
+  const newSquare = squares[Math.floor(Math.random() * width * width)]
+  newSquare.classList.add('food', imageUrl)
 }
+
 
 function score() {
   console.log('score')
@@ -107,6 +105,7 @@ function init() {
   console.log(grid)
   playerScoreBoard = document.querySelector('#playerScore')
   result = document.querySelector('.result')
+  // randomFood = document.querySelector('.randomFood')
 
   // used a for loop to fill my grid with individual squares, as many as the width times the width
   for (let i = 0; i < width * width; i++) {

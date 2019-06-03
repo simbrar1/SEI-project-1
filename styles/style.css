@@ -39,10 +39,37 @@ div.grid-item.player {
 }
 
 div.grid-item.food {
-  background-image: url('../assets/bug2.png');
+  /* background-image: url('../assets/bug2.png'); */
   background-repeat: no-repeat;
   background-size: contain;
 }
+
+div.grid-item.food.food-one {
+  background-image: url('../assets/bug2.png');
+}
+
+div.grid-item.food.food-two {
+  background-image: url('../assets/antelope.jpeg');
+}
+
+div.grid-item.food.food-three {
+  background-image: url('../assets/zebra.png');
+}
+
+div.grid-item.food.food-four {
+  background-image: url('../assets/monkey.png');
+}
+
+div.grid-item.food.food-five {
+  background-image: url('../assets/hippo.jpeg');
+}
+
+
+
+
+
+
+
 
 .score {
   border-radius: 10px;
