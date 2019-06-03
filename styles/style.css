@@ -14,6 +14,7 @@ body {
   justify-content: center;
   flex-direction: column;
   background-image: url('../assets/LLKK.jpg');
+  background-size: cover;
 }
 
 div.grid {
@@ -27,9 +28,7 @@ div.grid {
 div.grid-item {
   width: 60px;
   height: 60px;
-
-  border: 1px solid black;
-
+  border: 1px solid white;
 }
 
 div.grid-item.player {
@@ -49,7 +48,7 @@ div.grid-item.food.food-one {
 }
 
 div.grid-item.food.food-two {
-  background-image: url('../assets/antelope.jpeg');
+  background-image: url('../assets/antelope.png');
 }
 
 div.grid-item.food.food-three {
@@ -61,26 +60,26 @@ div.grid-item.food.food-four {
 }
 
 div.grid-item.food.food-five {
-  background-image: url('../assets/hippo.jpeg');
+  background-image: url('../assets/hippo.png');
 }
 
+div.grid-item.food.food-six {
+  background-image: url('../assets/agrub.png');
+}
 
-
-
-
-
-
+div.grid-item.food.food-seven {
+  background-image: url('../assets/rhino.png');
+}
 
 .score {
   border-radius: 10px;
-  flex-direction: row;
   margin: 100px;
   border: 2px solid white;
   width: 150px;
   margin: 20px;
   font-size: 20px;
   text-align: center;
-  position: relative;
+  flex-flow: row;
 }
 
 #playerScore {
@@ -88,5 +87,18 @@ div.grid-item.food.food-five {
 }
 
 #player-label {
+  color: white;
+}
+
+div.highscore {
+  color: white;
+  flex-flow: row;
+}
+
+#high-score {
+  color: white;
+}
+
+#high-label {
   color: white;
 }

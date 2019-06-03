@@ -18,11 +18,10 @@ function movePlayer() {
   }
   squares[playerIndex].classList.add('player')
   snakeBigger(playerIndex)
-
 }
 
 function changePic() {
-  const foodPics = ['food-one', 'food-two', 'food-three', 'food-four', 'food-five']
+  const foodPics = ['food-one', 'food-two', 'food-three', 'food-four', 'food-five', 'food-six', 'food-seven']
   return foodPics[Math.floor(Math.random() * foodPics.length)]
 }
 
@@ -111,7 +110,7 @@ function init() {
   for (let i = 0; i < width * width; i++) {
     const square = document.createElement('div')
     square.classList.add('grid-item')
-    square.innerHTML = i
+    // square.innerHTML = i
     // square.innerHTML = `${i}, ${i % width}`
     squares.push(square)
     grid.append(square)
@@ -120,9 +119,6 @@ function init() {
   squares[playerIndex].classList.add('player')
   newFood()
   window.addEventListener('keydown', handleKeyDown)
-
-
 }
-
 
 window.addEventListener('DOMContentLoaded', init)
