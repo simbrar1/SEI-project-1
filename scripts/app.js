@@ -5,35 +5,46 @@ let direction = null
 // use math.floor for player to start on the 12th sq. Or just put 0 for them to start at 0
 let playerShouldMove = false
 let playerScore = 0
-const playerScoreBoard = document.querySelector('#playerScore')
-const result = document.querySelector('.result')
+let playerScoreBoard = null
+let result = null
+
+const randomFood = document.querySelector('.randomFood')[
+  '../asset/antelope.png'
+  ''
+]
+
 
 
 function movePlayer() {
   squares.forEach(square => square.classList.remove('player'))
   if (squares[playerIndex].classList.contains('food')) {
+    score()
     squares[playerIndex].classList.remove('food')
     newFood()
   }
   squares[playerIndex].classList.add('player')
   snakeBigger(playerIndex)
-  score()
+
 }
 
 function newFood() {
   return squares[Math.floor(Math.random() * width * width)].classList.add('food')
 }
 
+function changePic(){
+  return randomFood[Math.floor(Math.random() * randomFood.length)]
+}
+
 function score() {
-  if (squares[playerIndex].classList.contains('food'))
-    playerScore++
+  console.log('score')
+  playerScore++
   playerScoreBoard.innerHTML = playerScore
-  result.innerHTML
+  // result.innerHTML
 }
 
 function snakeBigger(playerIndex) {
   return squares.forEach((square) =>{
-    console.log(typeof square)
+    // console.log(typeof square)
     if (square.className === 'grid-item player') {
       // square[playerIndex+1].classList.add('player')
     }
@@ -94,6 +105,8 @@ function init() {
   //get hold of that parent grid div
   const grid = document.querySelector('.grid')
   console.log(grid)
+  playerScoreBoard = document.querySelector('#playerScore')
+  result = document.querySelector('.result')
 
   // used a for loop to fill my grid with individual squares, as many as the width times the width
   for (let i = 0; i < width * width; i++) {
@@ -108,6 +121,7 @@ function init() {
   squares[playerIndex].classList.add('player')
   newFood()
   window.addEventListener('keydown', handleKeyDown)
+
 
 }
 

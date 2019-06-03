@@ -33,14 +33,13 @@ div.grid-item {
 }
 
 div.grid-item.player {
-  background-image: url('../assets/simb.jpeg');
+  background-image: url('../assets/newsim.png');
   background-repeat: no-repeat;
   background-size: contain;
 }
 
 div.grid-item.food {
-  /* background: red; */
-  background-image: url('../assets/bug.png');
+  background-image: url('../assets/bug2.png');
   background-repeat: no-repeat;
   background-size: contain;
 }
