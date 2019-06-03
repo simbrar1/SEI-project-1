@@ -6,8 +6,7 @@ let direction = null
 let playerShouldMove = false
 let playerScore = 0
 let playerScoreBoard = null
-let result = null
-// let randomFood = null
+//let highScore = null
 
 function movePlayer() {
   squares.forEach(square => square.classList.remove('player'))
@@ -17,7 +16,7 @@ function movePlayer() {
     newFood()
   }
   squares[playerIndex].classList.add('player')
-  snakeBigger(playerIndex)
+  // snakeBigger(playerIndex)
 }
 
 function changePic() {
@@ -25,7 +24,12 @@ function changePic() {
   return foodPics[Math.floor(Math.random() * foodPics.length)]
 }
 
+
 function newFood() {
+  const randomIndex = Math.floor(Math.random() * squares.length)
+  while(squares[randomIndex].classList.contains('playerIndex')) {
+    squares[randomIndex].classList.add('fuel')
+  }
   const imageUrl = changePic()
   const newSquare = squares[Math.floor(Math.random() * width * width)]
   newSquare.classList.add('food', imageUrl)
@@ -39,14 +43,14 @@ function score() {
   // result.innerHTML
 }
 
-function snakeBigger(playerIndex) {
-  return squares.forEach((square) =>{
-    // console.log(typeof square)
-    if (square.className === 'grid-item player') {
-      // square[playerIndex+1].classList.add('player')
-    }
-  })
-}
+// function snakeBigger(playerIndex) {
+//   return squares.forEach((square) => {
+//     // console.log(typeof square)
+//     if (square.className === 'grid-item player') {
+//       square[playerIndex+1].classList.add('player')
+//     }
+//   })
+// }
 
 function handleKeyDown(e) {
   //console.log(e.keyCode)
@@ -64,11 +68,15 @@ function handleKeyDown(e) {
     case 'ArrowDown':
       direction = 'down'
       break
-    default:
-      playerShouldMove = false
   }
   if (playerShouldMove) movePlayer()
 }
+
+// if (squares[playerIndex[0]].classList.contains('newFood')) {
+//   squares[playerIndex[0]].classList.remove('newFood')
+//   playerIndex.push(playerIndex[playerIndex.length-1])
+//   newFood()
+// }
 
 function handleDirection() {
   switch(direction) {
@@ -96,22 +104,19 @@ function handleDirection() {
   if (playerShouldMove) movePlayer()
 }
 
-setInterval(handleDirection, 500)
+setInterval(handleDirection, 300)
 
 function init() {
   //get hold of that parent grid div
   const grid = document.querySelector('.grid')
   console.log(grid)
   playerScoreBoard = document.querySelector('#playerScore')
-  result = document.querySelector('.result')
-  // randomFood = document.querySelector('.randomFood')
+  // highScore = document.querySelector('.result')
 
   // used a for loop to fill my grid with individual squares, as many as the width times the width
   for (let i = 0; i < width * width; i++) {
     const square = document.createElement('div')
     square.classList.add('grid-item')
-    // square.innerHTML = i
-    // square.innerHTML = `${i}, ${i % width}`
     squares.push(square)
     grid.append(square)
 
