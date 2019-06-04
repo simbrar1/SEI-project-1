@@ -5,18 +5,27 @@ let direction = null
 // use math.floor for player to start on the 12th sq. Or just put 0 for them to start at 0
 let playerShouldMove = false
 let playerScore = 0
+const snake = [1]
 let playerScoreBoard = null
 //let highScore = null
+// const sound = document.querySelector('.sound')
 
 function movePlayer() {
   squares.forEach(square => square.classList.remove('player'))
   if (squares[playerIndex].classList.contains('food')) {
+    // sound.src = '../assets/Whoah-NiceOne-Studio.wav'
+    // sound.play()
     score()
     squares[playerIndex].classList.remove('food')
     newFood()
   }
   squares[playerIndex].classList.add('player')
-  // snakeBigger(playerIndex)
+}
+
+function newFood() {
+  const imageUrl = changePic()
+  const newSquare = squares[Math.floor(Math.random() * width * width)]
+  newSquare.classList.add('food', imageUrl)
 }
 
 function changePic() {
@@ -24,33 +33,12 @@ function changePic() {
   return foodPics[Math.floor(Math.random() * foodPics.length)]
 }
 
-
-function newFood() {
-  const randomIndex = Math.floor(Math.random() * squares.length)
-  while(squares[randomIndex].classList.contains('playerIndex')) {
-    squares[randomIndex].classList.add('fuel')
-  }
-  const imageUrl = changePic()
-  const newSquare = squares[Math.floor(Math.random() * width * width)]
-  newSquare.classList.add('food', imageUrl)
-}
-
-
 function score() {
   console.log('score')
   playerScore++
   playerScoreBoard.innerHTML = playerScore
   // result.innerHTML
 }
-
-// function snakeBigger(playerIndex) {
-//   return squares.forEach((square) => {
-//     // console.log(typeof square)
-//     if (square.className === 'grid-item player') {
-//       square[playerIndex+1].classList.add('player')
-//     }
-//   })
-// }
 
 function handleKeyDown(e) {
   //console.log(e.keyCode)
@@ -71,12 +59,6 @@ function handleKeyDown(e) {
   }
   if (playerShouldMove) movePlayer()
 }
-
-// if (squares[playerIndex[0]].classList.contains('newFood')) {
-//   squares[playerIndex[0]].classList.remove('newFood')
-//   playerIndex.push(playerIndex[playerIndex.length-1])
-//   newFood()
-// }
 
 function handleDirection() {
   switch(direction) {
@@ -107,7 +89,6 @@ function handleDirection() {
 setInterval(handleDirection, 300)
 
 function init() {
-  //get hold of that parent grid div
   const grid = document.querySelector('.grid')
   console.log(grid)
   playerScoreBoard = document.querySelector('#playerScore')
@@ -121,7 +102,11 @@ function init() {
     grid.append(square)
 
   }
-  squares[playerIndex].classList.add('player')
+  squares[snake[0]].classList.add('player')
+
+  squares.forEach((square, index) => {
+    if (snake.includes(index)) square.classList.add('player')
+  })
   newFood()
   window.addEventListener('keydown', handleKeyDown)
 }
