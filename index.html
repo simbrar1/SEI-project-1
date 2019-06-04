@@ -7,18 +7,21 @@
     <link rel="stylesheet" href="styles/style.css">
   </head>
   <body>
-    <!-- <h1>SNAKE</h1> -->
-    <!-- <img src="assets/snake.png" alt="snake"></img> -->
-    <!-- <img src="assets/LK.gif" alt=""></img> -->
+    <nav>
+      <div class="score" id="container">
+        <div id="player-label" class="badge">Score</div>
+        <span id="playerScore">0</span>
+      </div>
+      <div class="high score">
+      <div id="high-label" class="badge">High Score</div>
+      <span id="high-score">0</span>
+      </div>
+      <div>
+        <img src="assets/snake.png" alt="snake" style="height: 100px">
+        <img src="assets/LK.gif" alt="">
+      </div>
+    </nav>
     <audio class="sound" src=""></audio>
-    <div class="score">
-      <div id="player-label" class="badge">Score</div>
-      <span id="playerScore">0</span>
-    </div>
-    <div class="high score">
-    <div id="high-label" class="badge">High Score</div>
-    <span id="high-score">0</span>
-    </div>
   <div class="grid"></div>
   <div class="food"></div>
   </body>

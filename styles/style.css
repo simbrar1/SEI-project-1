@@ -17,6 +17,14 @@ body {
   background-size: cover;
 }
 
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
 div.grid {
   width: 600px;
   height: 600px;
