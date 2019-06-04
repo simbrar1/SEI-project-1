@@ -5,16 +5,16 @@ let direction = null
 // use math.floor for player to start on the 12th sq. Or just put 0 for them to start at 0
 let playerShouldMove = false
 let playerScore = 0
-const snake = [1]
+const snake = [1,2,3,4]
 let playerScoreBoard = null
+let sound = null
 //let highScore = null
-// const sound = document.querySelector('.sound')
 
 function movePlayer() {
   squares.forEach(square => square.classList.remove('player'))
   if (squares[playerIndex].classList.contains('food')) {
-    // sound.src = '../assets/Whoah-NiceOne-Studio.wav'
-    // sound.play()
+    sound.src = newSound()
+    sound.play()
     score()
     squares[playerIndex].classList.remove('food')
     newFood()
@@ -38,6 +38,11 @@ function score() {
   playerScore++
   playerScoreBoard.innerHTML = playerScore
   // result.innerHTML
+}
+
+function newSound() {
+  const sound = ['assets/Whoah-NiceOne-Studio.wav', 'assets/TastesLikeChicken.wav', 'assets/PiquantWithAPleasantCrunch.wav', 'assets/SlimyYetSatisfyingSimba.wav', 'assets/SlimyYetSatisfyingPumbaa.wav', 'assets/Eeew-Gross-Studio.wav']
+  return sound[Math.floor(Math.random() * sound.length)]
 }
 
 function handleKeyDown(e) {
@@ -92,6 +97,7 @@ function init() {
   const grid = document.querySelector('.grid')
   console.log(grid)
   playerScoreBoard = document.querySelector('#playerScore')
+  sound = document.querySelector('.sound')
   // highScore = document.querySelector('.result')
 
   // used a for loop to fill my grid with individual squares, as many as the width times the width
