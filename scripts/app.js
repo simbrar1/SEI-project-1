@@ -5,9 +5,11 @@ let direction = null
 // use math.floor for player to start on the 12th sq. Or just put 0 for them to start at 0
 let playerShouldMove = false
 let playerScore = 0
-const snake = [1,2,3,4]
+// const snake = [1,2]
 let playerScoreBoard = null
 let sound = null
+let foodEaten = 0
+let snake = []
 //let highScore = null
 
 function movePlayer() {
@@ -17,9 +19,14 @@ function movePlayer() {
     sound.play()
     score()
     squares[playerIndex].classList.remove('food')
+    foodEaten++
+    console.log(foodEaten)
     newFood()
   }
   squares[playerIndex].classList.add('player')
+  for (let i = 0; i < snake.length; i++) {
+    squares[snake[i]].classList.add('player')
+  }
 }
 
 function newFood() {
@@ -66,6 +73,8 @@ function handleKeyDown(e) {
 }
 
 function handleDirection() {
+  snake.unshift(playerIndex)
+  snake = snake.slice(0, foodEaten)
   switch(direction) {
     case 'right':
       if (playerIndex % width < width - 1) {
@@ -108,11 +117,11 @@ function init() {
     grid.append(square)
 
   }
-  squares[snake[0]].classList.add('player')
+  squares[playerIndex].classList.add('player')
 
-  squares.forEach((square, index) => {
-    if (snake.includes(index)) square.classList.add('player')
-  })
+  // squares.forEach((square, index) => {
+  //   if (snake.includes(index)) square.classList.add('player')
+  // })
   newFood()
   window.addEventListener('keydown', handleKeyDown)
 }
