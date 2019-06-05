@@ -9,7 +9,8 @@ let playerScoreBoard = null
 let sound = null
 let foodEaten = 0
 let snake = []
-// const result = null
+// const resetButton = document.querySelector('#reset')
+const result = 0
 
 function movePlayer() {
   squares.forEach(square => square.classList.remove('player'))
@@ -23,7 +24,7 @@ function movePlayer() {
     console.log(foodEaten)
     newFood()
   }
-  //snake getting bigger
+  //snake getting bigger when eating food
   squares[playerIndex].classList.add('player')
   for (let i = 0; i < snake.length; i++) {
     squares[snake[i]].classList.add('player')
@@ -37,7 +38,6 @@ function newFood() {
   newSquare.classList.add('food', imageUrl)
 }
 
-
 //func to change the food photos
 function changePic() {
   const foodPics = ['food-one', 'food-two', 'food-three', 'food-four', 'food-five', 'food-six', 'food-seven']
@@ -49,7 +49,8 @@ function score() {
   console.log('score')
   playerScore++
   playerScoreBoard.innerHTML = playerScore
-  // result.innerHTML
+  // reset()
+  result.innerHTML
 }
 
 // function highScore() {
@@ -66,16 +67,17 @@ function handleKeyDown(e) {
   playerShouldMove = true
   switch(e.key) {
     case 'ArrowRight':
-      direction = 'right'
+      direction = direction === 'left' ? 'left' : 'right'
+      //asking the question if the direction is going right? if it is then they stay right
       break
     case 'ArrowLeft':
-      direction = 'left'
+      direction = direction === 'right' ? 'right' : 'left'
       break
     case 'ArrowUp':
-      direction = 'up'
+      direction = direction === 'down' ? 'down' : 'up'
       break
     case 'ArrowDown':
-      direction = 'down'
+      direction = direction === 'up' ? 'up' : 'down'
       break
   }
   if (playerShouldMove) {
@@ -88,6 +90,7 @@ function clearBoard() {
   const overlay = document.querySelector('.overlay')
   overlay.classList.add('show')
   grid.innerHTML = ''
+  //snake hits grid
 }
 
 function handleDirection() {
@@ -135,11 +138,21 @@ function handleDirection() {
 //how fast the snake is moving
 setInterval(handleDirection, 300)
 
+// function reset() {
+//   // reset scores to 0
+//   playerScore = 0
+//   // cleared result message
+//   result.innerHTML = ''
+//   resetButton.addEventListener('click', reset)
+// }
+
+
 function init() {
   const grid = document.querySelector('.grid')
   console.log(grid)
   playerScoreBoard = document.querySelector('#playerScore')
   sound = document.querySelector('.sound')
+
   // highScore = document.querySelector('.result')
 
   // used a for loop to fill my grid with individual squares, as many as the width times the width
@@ -148,12 +161,12 @@ function init() {
     square.classList.add('grid-item')
     squares.push(square)
     grid.append(square)
-
   }
   squares[playerIndex].classList.add('player')
 
   newFood()
   window.addEventListener('keydown', handleKeyDown)
+
 }
 
 window.addEventListener('DOMContentLoaded', init)
