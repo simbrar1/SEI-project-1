@@ -118,3 +118,31 @@ div.highscore {
 .image {
   float: left;
 }
+
+main {
+  position: relative;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+}
+
+.overlay.show {
+  display: flex;
+  flex-direction: column;
+  color: white;
+
+}
+
+button {
+  text-transform: uppercase;
+  font-size: 15px;
+  text-align: center;
+  display: inline-block;
+  background: white;
+  color: black;
+}

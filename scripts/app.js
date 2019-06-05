@@ -37,27 +37,6 @@ function newFood() {
   newSquare.classList.add('food', imageUrl)
 }
 
-// function checkCollision() {
-//   if () {
-//
-//   }
-
-//   let leftCollision = (snake.width === width)
-//   let topCollision = (snake.width === width)
-// 	let rightCollision = (snake.width === width)
-// 	let bottomCollision = (snake.width === width)
-//
-// 	let wallCollision = leftCollision || topCollision || rightCollision || bottomCollision
-// 	let selfCollision = false
-//
-//   for (let i = 0; i < {
-//     if ??? {
-//       // selfCollision = true
-//     }
-//   }
-//   return wallCollision || selfCollision
-// }
-
 
 //func to change the food photos
 function changePic() {
@@ -106,6 +85,8 @@ function handleKeyDown(e) {
 
 function clearBoard() {
   const grid = document.querySelector('.grid')
+  const overlay = document.querySelector('.overlay')
+  overlay.classList.add('show')
   grid.innerHTML = 'You Lost!'
 }
 
