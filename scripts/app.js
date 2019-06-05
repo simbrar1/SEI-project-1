@@ -87,7 +87,7 @@ function clearBoard() {
   const grid = document.querySelector('.grid')
   const overlay = document.querySelector('.overlay')
   overlay.classList.add('show')
-  grid.innerHTML = 'You Lost!'
+  grid.innerHTML = ''
 }
 
 function handleDirection() {
