@@ -21,7 +21,11 @@ nav {
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+#container {
   justify-content: space-around;
 }
 
@@ -41,13 +45,12 @@ div.grid-item {
 }
 
 div.grid-item.player {
-  background-image: url('../assets/newsim.png');
+  background-image: url('../assets/simba.png');
   background-repeat: no-repeat;
   background-size: contain;
 }
 
 div.grid-item.food {
-  /* background-image: url('../assets/bug2.png'); */
   background-repeat: no-repeat;
   background-size: contain;
 }

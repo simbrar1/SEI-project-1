@@ -9,7 +9,7 @@ let playerScoreBoard = null
 let sound = null
 let foodEaten = 0
 let snake = []
-//let highScore = null
+// const result = null
 
 function movePlayer() {
   squares.forEach(square => square.classList.remove('player'))
@@ -17,6 +17,7 @@ function movePlayer() {
     sound.src = newSound()
     sound.play()
     score()
+    // highScore()
     squares[playerIndex].classList.remove('food')
     foodEaten++
     console.log(foodEaten)
@@ -36,6 +37,28 @@ function newFood() {
   newSquare.classList.add('food', imageUrl)
 }
 
+// function checkCollision() {
+//   if () {
+//
+//   }
+
+//   let leftCollision = (snake.width === width)
+//   let topCollision = (snake.width === width)
+// 	let rightCollision = (snake.width === width)
+// 	let bottomCollision = (snake.width === width)
+//
+// 	let wallCollision = leftCollision || topCollision || rightCollision || bottomCollision
+// 	let selfCollision = false
+//
+//   for (let i = 0; i < {
+//     if ??? {
+//       // selfCollision = true
+//     }
+//   }
+//   return wallCollision || selfCollision
+// }
+
+
 //func to change the food photos
 function changePic() {
   const foodPics = ['food-one', 'food-two', 'food-three', 'food-four', 'food-five', 'food-six', 'food-seven']
@@ -49,6 +72,9 @@ function score() {
   playerScoreBoard.innerHTML = playerScore
   // result.innerHTML
 }
+
+// function highScore() {
+//   if (score
 
 //food gets eaten noises
 function newSound() {
@@ -73,7 +99,14 @@ function handleKeyDown(e) {
       direction = 'down'
       break
   }
-  if (playerShouldMove) movePlayer()
+  if (playerShouldMove) {
+    movePlayer()
+  }
+}
+
+function clearBoard() {
+  const grid = document.querySelector('.grid')
+  grid.innerHTML = 'You Lost!'
 }
 
 function handleDirection() {
@@ -83,25 +116,39 @@ function handleDirection() {
     case 'right':
       if (playerIndex % width < width - 1) {
         playerIndex++
+      } else {
+        clearBoard()
+        playerShouldMove = false
       }
       break
     case 'left':
       if (playerIndex % width > 0) {
         playerIndex--
+      } else {
+        clearBoard()
+        playerShouldMove = false
       }
       break
     case 'up':
       if (playerIndex - width >= 0) {
         playerIndex -= width
+      } else {
+        clearBoard()
+        playerShouldMove = false
       }
       break
     case 'down':
       if (playerIndex + width < width * width) {
         playerIndex += width
+      } else {
+        clearBoard()
+        playerShouldMove = false
       }
       break
   }
-  if (playerShouldMove) movePlayer()
+  if (playerShouldMove) {
+    movePlayer()
+  }
 }
 
 //how fast the snake is moving
