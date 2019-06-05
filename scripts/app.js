@@ -9,7 +9,7 @@ let playerScoreBoard = null
 let sound = null
 let foodEaten = 0
 let snake = []
-// const resetButton = document.querySelector('#reset')
+
 const result = 0
 
 function movePlayer() {
@@ -23,6 +23,9 @@ function movePlayer() {
     foodEaten++
     console.log(foodEaten)
     newFood()
+  }
+  if (squares[playerIndex].classList.contains(playerIndex)) {
+    return false
   }
   //snake getting bigger when eating food
   squares[playerIndex].classList.add('player')
@@ -138,16 +141,13 @@ function handleDirection() {
 //how fast the snake is moving
 setInterval(handleDirection, 300)
 
-// function reset() {
-//   // reset scores to 0
-//   playerScore = 0
-//   // cleared result message
-//   result.innerHTML = ''
-//   resetButton.addEventListener('click', reset)
-// }
-
 
 function init() {
+  const resetButton = document.querySelector('#PlayAgain')
+  resetButton.addEventListener('click', () => {
+    location.reload()
+  })
+
   const grid = document.querySelector('.grid')
   console.log(grid)
   playerScoreBoard = document.querySelector('#playerScore')
