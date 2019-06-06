@@ -24,9 +24,6 @@ function movePlayer() {
     console.log(foodEaten)
     newFood()
   }
-  if (squares[playerIndex].classList.contains(playerIndex)) {
-    return false
-  }
   //snake getting bigger when eating food
   squares[playerIndex].classList.add('player')
   for (let i = 0; i < snake.length; i++) {
@@ -37,7 +34,10 @@ function movePlayer() {
 //new food generating at random
 function newFood() {
   const imageUrl = changePic()
-  const newSquare = squares[Math.floor(Math.random() * width * width)]
+  let newSquare = squares[Math.floor(Math.random() * width * width)]
+  while (snake.includes(newSquare)) {
+    newSquare = squares[Math.floor(Math.random() * width * width)]
+  }
   newSquare.classList.add('food', imageUrl)
 }
 
@@ -99,6 +99,7 @@ function clearBoard() {
 function handleDirection() {
   snake.unshift(playerIndex)
   snake = snake.slice(0, foodEaten)
+
   switch(direction) {
     case 'right':
       if (playerIndex % width < width - 1) {
@@ -135,6 +136,10 @@ function handleDirection() {
   }
   if (playerShouldMove) {
     movePlayer()
+  }
+
+  if (snake.slice(1).includes(playerIndex)) {
+    clearBoard()
   }
 }
 
