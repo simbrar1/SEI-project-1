@@ -3,6 +3,7 @@ const squares = []
 let playerIndex = Math.floor(width * width / 2)
 let direction = null
 // use math.floor for player to start on the 12th sq. Or just put 0 for them to start at 0
+let gameInPlay = false
 let playerShouldMove = false
 let playerScore = 0
 let playerScoreBoard = null
@@ -16,20 +17,22 @@ let song = null
 function handleKeyDown(e) {
   //console.log(e.keyCode)
   playerShouldMove = true
-  switch(e.key) {
-    case 'ArrowRight':
-      direction = direction === 'left' ? 'left' : 'right'
-      //asking the question if the direction is going right? if it is then they stay right
-      break
-    case 'ArrowLeft':
-      direction = direction === 'right' ? 'right' : 'left'
-      break
-    case 'ArrowUp':
-      direction = direction === 'down' ? 'down' : 'up'
-      break
-    case 'ArrowDown':
-      direction = direction === 'up' ? 'up' : 'down'
-      break
+  if (gameInPlay) {
+    switch(e.key) {
+      case 'ArrowRight':
+        direction = direction === 'left' ? 'left' : 'right'
+        //asking the question if the direction is going right? if it is then they stay right
+        break
+      case 'ArrowLeft':
+        direction = direction === 'right' ? 'right' : 'left'
+        break
+      case 'ArrowUp':
+        direction = direction === 'down' ? 'down' : 'up'
+        break
+      case 'ArrowDown':
+        direction = direction === 'up' ? 'up' : 'down'
+        break
+    }
   }
 }
 
@@ -71,7 +74,7 @@ function handleDirection() {
       }
       break
   }
-  if (playerShouldMove) {
+  if (gameInPlay && playerShouldMove) {
     movePlayer()
   }
 
@@ -143,6 +146,7 @@ function newSound() {
 
 //clear board when snake hits grid
 function clearBoard() {
+  gameInPlay = false
   const grid = document.querySelector('.grid')
   const overlay = document.querySelector('.overlay')
   overlay.classList.add('show')
@@ -155,10 +159,7 @@ function init() {
     location.reload()
   })
 
-  const startButton = document.querySelector('#Start')
-  startButton.addEventListener('click', () => {
-    handleDirection()
-  })
+
 
   // querySelector for start button
   // start button - addEventListener on click
@@ -169,7 +170,10 @@ function init() {
   console.log(grid)
   playerScoreBoard = document.querySelector('#playerScore')
   sound = document.querySelector('.sound')
-  song = document.querySelector('.song')
+  // song = document.querySelector('.song')
+
+
+
 
   // highScore = document.querySelector('.result')
 
@@ -183,10 +187,22 @@ function init() {
   }
   squares[playerIndex].classList.add('player')
 
+  const startScreen = document.querySelector('.start-screen')
+  const gridItem = document.querySelectorAll('.grid-item')
+
+  const startButton = document.querySelector('#start')
+  startButton.addEventListener('click', () => {
+    gameInPlay = true
+    handleDirection()
+    // song.play()
+    startScreen.style.display = 'none'
+    gridItem.forEach(item => item.style.display = 'block')
+  })
+
   newFood()
 
   window.addEventListener('keydown', handleKeyDown)
-  window.addEventListener('click', () => song.play())
+  // window.addEventListener('click', () => song.play())
 
 }
 
