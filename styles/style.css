@@ -15,6 +15,7 @@ body {
   flex-direction: column;
   background-image: url('../assets/LLKK.jpg');
   background-size: cover;
+  background-repeat: no-repeat;
 }
 
 nav {
@@ -27,20 +28,32 @@ nav {
 
 #container {
   justify-content: space-around;
+  font-family: fantasy;
+}
+
+.start-screen {
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  align-items: center;
+  font-size: 22px;
+  font-family: fantasy;
+  color: black;
 }
 
 div.grid {
   width: 600px;
   height: 600px;
-  display: flex;
   flex-wrap: wrap;
+  display: flex;
   color: white;
-  box-shadow: 20px 20px 50px 10px orange; */
+  box-shadow: 20px 20px 50px 10px orange;
 }
 
 div.grid-item {
   width: 60px;
   height: 60px;
+  display: none;
   border: 1px solid white;
 }
 
@@ -145,7 +158,6 @@ main {
 .overlay .message {
   animation: heartBeat 2s infinite;
 }
-
 
 button {
   text-transform: uppercase;

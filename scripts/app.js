@@ -9,61 +9,9 @@ let playerScoreBoard = null
 let sound = null
 let foodEaten = 0
 let snake = []
-
 const result = 0
-
-function movePlayer() {
-  squares.forEach(square => square.classList.remove('player'))
-  if (squares[playerIndex].classList.contains('food')) {
-    sound.src = newSound()
-    sound.play()
-    score()
-    // highScore()
-    squares[playerIndex].classList.remove('food')
-    foodEaten++
-    console.log(foodEaten)
-    newFood()
-  }
-  //snake getting bigger when eating food
-  squares[playerIndex].classList.add('player')
-  for (let i = 0; i < snake.length; i++) {
-    squares[snake[i]].classList.add('player')
-  }
-}
-
-//new food generating at random
-function newFood() {
-  const imageUrl = changePic()
-  let newSquare = squares[Math.floor(Math.random() * width * width)]
-  while (snake.includes(newSquare)) {
-    newSquare = squares[Math.floor(Math.random() * width * width)]
-  }
-  newSquare.classList.add('food', imageUrl)
-}
-
-//func to change the food photos
-function changePic() {
-  const foodPics = ['food-one', 'food-two', 'food-three', 'food-four', 'food-five', 'food-six', 'food-seven']
-  return foodPics[Math.floor(Math.random() * foodPics.length)]
-}
-
-//score function
-function score() {
-  console.log('score')
-  playerScore++
-  playerScoreBoard.innerHTML = playerScore
-  // reset()
-  result.innerHTML
-}
-
-// function highScore() {
-//   if (score
-
-//food gets eaten noises
-function newSound() {
-  const sound = ['assets/Whoah-NiceOne-Studio.wav', 'assets/TastesLikeChicken.wav', 'assets/PiquantWithAPleasantCrunch.wav', 'assets/SlimyYetSatisfyingSimba.wav', 'assets/SlimyYetSatisfyingPumbaa.wav', 'assets/Eeew-Gross-Studio.wav']
-  return sound[Math.floor(Math.random() * sound.length)]
-}
+let speed = 300
+let song = null
 
 function handleKeyDown(e) {
   //console.log(e.keyCode)
@@ -83,17 +31,6 @@ function handleKeyDown(e) {
       direction = direction === 'up' ? 'up' : 'down'
       break
   }
-  if (playerShouldMove) {
-    movePlayer()
-  }
-}
-
-function clearBoard() {
-  const grid = document.querySelector('.grid')
-  const overlay = document.querySelector('.overlay')
-  overlay.classList.add('show')
-  grid.innerHTML = ''
-  //snake hits grid
 }
 
 function handleDirection() {
@@ -138,14 +75,79 @@ function handleDirection() {
     movePlayer()
   }
 
+  // when foodEaten is 12, change the speed
+  if (foodEaten === 12) {
+    speed = 200
+  }
+  setTimeout(handleDirection, speed)
+
+  //game over if snake crashes into itslef
   if (snake.slice(1).includes(playerIndex)) {
     clearBoard()
   }
 }
 
-//how fast the snake is moving
-setInterval(handleDirection, 300)
+function movePlayer() {
+  squares.forEach(square => square.classList.remove('player'))
+  if (squares[playerIndex].classList.contains('food')) {
+    sound.src = newSound()
+    sound.play()
+    score()
+    // highScore()
+    squares[playerIndex].classList.remove('food')
+    foodEaten++
+    newFood()
+  }
 
+  //snake getting bigger when eating food
+  squares[playerIndex].classList.add('player')
+  for (let i = 0; i < snake.length; i++) {
+    squares[snake[i]].classList.add('player')
+  }
+}
+
+//new food generating at random
+function newFood() {
+  const imageUrl = changePic()
+  let newSquare = squares[Math.floor(Math.random() * width * width)]
+  while (snake.includes(squares.indexOf(newSquare))) {
+    // console.log('snake includes newSquare')
+    newSquare = squares[Math.floor(Math.random() * width * width)]
+    // console.log('picking new square')
+  }
+  newSquare.classList.add('food', imageUrl)
+}
+
+//function to change the food photos
+function changePic() {
+  const foodPics = ['food-one', 'food-two', 'food-three', 'food-four', 'food-five', 'food-six', 'food-seven']
+  return foodPics[Math.floor(Math.random() * foodPics.length)]
+}
+
+//score function
+function score() {
+  console.log('score')
+  playerScore++
+  playerScoreBoard.innerHTML = playerScore
+  result.innerHTML
+}
+
+// function highScore() {
+//   if (score
+
+//food gets eaten noises
+function newSound() {
+  const sound = ['assets/Whoah-NiceOne-Studio.wav', 'assets/TastesLikeChicken.wav', 'assets/PiquantWithAPleasantCrunch.wav', 'assets/SlimyYetSatisfyingSimba.wav', 'assets/SlimyYetSatisfyingPumbaa.wav', 'assets/Eeew-Gross-Studio.wav']
+  return sound[Math.floor(Math.random() * sound.length)]
+}
+
+//clear board when snake hits grid
+function clearBoard() {
+  const grid = document.querySelector('.grid')
+  const overlay = document.querySelector('.overlay')
+  overlay.classList.add('show')
+  grid.innerHTML = ''
+}
 
 function init() {
   const resetButton = document.querySelector('#PlayAgain')
@@ -153,10 +155,21 @@ function init() {
     location.reload()
   })
 
+  const startButton = document.querySelector('#Start')
+  startButton.addEventListener('click', () => {
+    handleDirection()
+  })
+
+  // querySelector for start button
+  // start button - addEventListener on click
+  // change css for start screen to display: none
+  // run handleDirection() function to enable game play -- move to here from line 89
+
   const grid = document.querySelector('.grid')
   console.log(grid)
   playerScoreBoard = document.querySelector('#playerScore')
   sound = document.querySelector('.sound')
+  song = document.querySelector('.song')
 
   // highScore = document.querySelector('.result')
 
@@ -166,11 +179,14 @@ function init() {
     square.classList.add('grid-item')
     squares.push(square)
     grid.append(square)
+    //defining grid
   }
   squares[playerIndex].classList.add('player')
 
   newFood()
+
   window.addEventListener('keydown', handleKeyDown)
+  window.addEventListener('click', () => song.play())
 
 }
 
