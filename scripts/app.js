@@ -21,7 +21,7 @@ function handleKeyDown(e) {
     switch(e.key) {
       case 'ArrowRight':
         direction = direction === 'left' ? 'left' : 'right'
-        //asking the question if the direction is going right? if it is then they stay right
+        //asking the question if the direction is going left if no stay left
         break
       case 'ArrowLeft':
         direction = direction === 'right' ? 'right' : 'left'
@@ -123,7 +123,7 @@ function newFood() {
 
 //function to change the food photos
 function changePic() {
-  const foodPics = ['food-one', 'food-two', 'food-three', 'food-four', 'food-five', 'food-six', 'food-seven']
+  const foodPics = ['food-one', 'food-two', 'food-three', 'food-four', 'food-five', 'food-six', 'food-seven', 'food-eight', 'food-nine', 'food-ten']
   return foodPics[Math.floor(Math.random() * foodPics.length)]
 }
 
@@ -140,7 +140,7 @@ function score() {
 
 //food gets eaten noises
 function newSound() {
-  const sound = ['assets/Whoah-NiceOne-Studio.wav', 'assets/TastesLikeChicken.wav', 'assets/PiquantWithAPleasantCrunch.wav', 'assets/SlimyYetSatisfyingSimba.wav', 'assets/SlimyYetSatisfyingPumbaa.wav', 'assets/Eeew-Gross-Studio.wav']
+  const sound = ['assets/Whoah-NiceOne-Studio.wav', 'assets/TastesLikeChicken.wav', 'assets/PiquantWithAPleasantCrunch.wav', 'assets/SlimyYetSatisfyingSimba.wav', 'assets/SlimyYetSatisfyingPumbaa.wav', 'assets/Eeew-Gross-Studio.wav', 'assets/TheLittleCreamFilledKind.wav', 'assets/Allrighty-Studio.wav', 'assets/CarnivorsOy.wav']
   return sound[Math.floor(Math.random() * sound.length)]
 }
 
@@ -160,19 +160,11 @@ function init() {
   })
 
 
-
-  // querySelector for start button
-  // start button - addEventListener on click
-  // change css for start screen to display: none
-  // run handleDirection() function to enable game play -- move to here from line 89
-
   const grid = document.querySelector('.grid')
   console.log(grid)
   playerScoreBoard = document.querySelector('#playerScore')
   sound = document.querySelector('.sound')
-  // song = document.querySelector('.song')
-
-
+  song = document.querySelector('.song')
 
 
   // highScore = document.querySelector('.result')
@@ -194,7 +186,7 @@ function init() {
   startButton.addEventListener('click', () => {
     gameInPlay = true
     handleDirection()
-    // song.play()
+    song.play()
     startScreen.style.display = 'none'
     gridItem.forEach(item => item.style.display = 'block')
   })
@@ -202,7 +194,7 @@ function init() {
   newFood()
 
   window.addEventListener('keydown', handleKeyDown)
-  // window.addEventListener('click', () => song.play())
+  window.addEventListener('click', () => song.play())
 
 }
 
