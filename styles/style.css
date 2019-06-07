@@ -106,9 +106,11 @@ div.grid-item.food.food-ten {
   /* border: 2px solid white; */
   width: 100px;
   margin: 20px;
-  font-size: 20px;
+  font-size: 40px;
   text-align: center;
   flex-flow: row;
+  animation: pulse 1s infinite;
+  font-family: fantasy;
 }
 
 #playerScore {
@@ -119,8 +121,8 @@ div.grid-item.food.food-ten {
   color: white;
 }
 
-div.highscore {
-  color: white;
+/* div.highscore { */
+  /* color: white;
   flex-flow: row;
 }
 
@@ -130,14 +132,28 @@ div.highscore {
 
 #high-label {
   color: white;
-}
+} */
 
 .image {
   float: left;
 }
 
+.lk {
+  margin-right: 170px;
+}
+
 main {
   position: relative;
+}
+
+h2 {
+  font-size: 27px;
+  text-transform: uppercase;
+}
+
+p {
+  line-height: 30px;
+  margin: 10px;
 }
 
 .overlay {
@@ -168,7 +184,9 @@ button {
   font-size: 15px;
   text-align: center;
   display: inline-block;
-  background: white;
+  background: yellow;
   color: black;
   font-family: fantasy;
+  padding: 5px;
+  margin: 15px;
 }

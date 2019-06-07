@@ -14,6 +14,7 @@ const result = 0
 let speed = 300
 let song = null
 
+
 function handleKeyDown(e) {
   //console.log(e.keyCode)
   playerShouldMove = true
@@ -82,6 +83,9 @@ function handleDirection() {
   if (foodEaten === 12) {
     speed = 200
   }
+  if (foodEaten === 16) {
+    speed = 170
+  }
   setTimeout(handleDirection, speed)
 
   //game over if snake crashes into itslef
@@ -129,14 +133,23 @@ function changePic() {
 
 //score function
 function score() {
-  console.log('score')
   playerScore++
   playerScoreBoard.innerHTML = playerScore
   result.innerHTML
 }
 
 // function highScore() {
-//   if (score
+//   if localStorage.getItem('highscore') === null) {
+// 			 // if there is no high score
+// 			localStorage.setItem('highscore',score)
+// 		} else {
+// 			//If there is a high score
+// 			if(score > localStorage.getItem('highscore')) {
+// 				localStorage.setItem('highscore',score)
+// 			}
+//     }
+// 		$('#high_score').innerHTML('High Score: '+localStorage.highscore)
+// 	}
 
 //food gets eaten noises
 function newSound() {
@@ -153,20 +166,13 @@ function clearBoard() {
   grid.innerHTML = ''
 }
 
+
 function init() {
-  const resetButton = document.querySelector('#PlayAgain')
-  resetButton.addEventListener('click', () => {
-    location.reload()
-  })
-
-
   const grid = document.querySelector('.grid')
   console.log(grid)
   playerScoreBoard = document.querySelector('#playerScore')
   sound = document.querySelector('.sound')
   song = document.querySelector('.song')
-
-
   // highScore = document.querySelector('.result')
 
   // used a for loop to fill my grid with individual squares, as many as the width times the width
@@ -189,6 +195,11 @@ function init() {
     song.play()
     startScreen.style.display = 'none'
     gridItem.forEach(item => item.style.display = 'block')
+  })
+
+  const resetButton = document.querySelector('#PlayAgain')
+  resetButton.addEventListener('click', () => {
+    location.reload()
   })
 
   newFood()
