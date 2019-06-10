@@ -84,7 +84,10 @@ function handleDirection() {
     speed = 200
   }
   if (foodEaten === 16) {
-    speed = 170
+    speed = 180
+  }
+  if (foodEaten === 25) {
+    speed = 160
   }
   setTimeout(handleDirection, speed)
 
@@ -117,8 +120,8 @@ function movePlayer() {
 function newFood() {
   const imageUrl = changePic()
   let newSquare = squares[Math.floor(Math.random() * width * width)]
-  while (snake.includes(squares.indexOf(newSquare))) {
-    // console.log('snake includes newSquare')
+  while (snake.includes(squares.indexOf(newSquare)) || playerIndex === squares.indexOf(newSquare)) {
+    console.log('snake includes newSquare')
     newSquare = squares[Math.floor(Math.random() * width * width)]
     // console.log('picking new square')
   }
