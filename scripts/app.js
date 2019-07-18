@@ -2,7 +2,6 @@ const width = 10
 const squares = []
 let playerIndex = Math.floor(width * width / 2)
 let direction = null
-// use math.floor for player to start on the 12th sq. Or just put 0 for them to start at 0
 let gameInPlay = false
 let playerShouldMove = false
 let playerScore = 0
@@ -22,7 +21,6 @@ function handleKeyDown(e) {
     switch(e.key) {
       case 'ArrowRight':
         direction = direction === 'left' ? 'left' : 'right'
-        //asking the question if the direction is going left if no stay left
         break
       case 'ArrowLeft':
         direction = direction === 'right' ? 'right' : 'left'
@@ -103,7 +101,6 @@ function movePlayer() {
     sound.src = newSound()
     sound.play()
     score()
-    // highScore()
     squares[playerIndex].classList.remove('food')
     foodEaten++
     newFood()
@@ -141,19 +138,6 @@ function score() {
   result.innerHTML
 }
 
-// function highScore() {
-//   if localStorage.getItem('highscore') === null) {
-// 			 // if there is no high score
-// 			localStorage.setItem('highscore',score)
-// 		} else {
-// 			//If there is a high score
-// 			if(score > localStorage.getItem('highscore')) {
-// 				localStorage.setItem('highscore',score)
-// 			}
-//     }
-// 		$('#high_score').innerHTML('High Score: '+localStorage.highscore)
-// 	}
-
 //food gets eaten noises
 function newSound() {
   const sound = ['assets/Whoah-NiceOne-Studio.wav', 'assets/TastesLikeChicken.wav', 'assets/PiquantWithAPleasantCrunch.wav', 'assets/SlimyYetSatisfyingSimba.wav', 'assets/SlimyYetSatisfyingPumbaa.wav', 'assets/Eeew-Gross-Studio.wav', 'assets/TheLittleCreamFilledKind.wav', 'assets/Allrighty-Studio.wav', 'assets/CarnivorsOy.wav']
@@ -176,7 +160,7 @@ function init() {
   playerScoreBoard = document.querySelector('#playerScore')
   sound = document.querySelector('.sound')
   song = document.querySelector('.song')
-  // highScore = document.querySelector('.result')
+
 
   // used a for loop to fill my grid with individual squares, as many as the width times the width
   for (let i = 0; i < width * width; i++) {
