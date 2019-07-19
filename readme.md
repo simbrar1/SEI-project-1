@@ -1,7 +1,7 @@
 # SEI-PROJECT 1 - SNAKE, The Lion King Edition
 
 ## Goal
-Snake is a classic game which most people will remember from the 90's. The aim was to create Snake within a time frame of 7 days using JavaScript. As you will see I have put my own spin on the game, and have added some fun sounds and images.
+The goal was to create the game 'Snake' within a given time frame of 7 days using JavaScript. As you will see I have put my own spin on the game, and have added audio and images for the 'food'.
 
 ## Controls
 SNAKE movements:
@@ -20,7 +20,7 @@ It opens with the home page where you are greeted with the instructions of the g
 
 Once you have read the instructions you can start to play.
 <img src="./assets/shot2.png" />
-Try to eat as much 'food' as possible without crashing into your own body or the side of the grid.
+Try to eat as much 'food' as possible to make the snake grow in length. Every food item you eat you gain a point, which is the main aim of the game.
 
 <img src="./assets/shot8.png" />
 Once it's game over you then have the option to play the game again.
