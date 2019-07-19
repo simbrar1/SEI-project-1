@@ -23,12 +23,13 @@ Once you have read the instructions you can start to play.
 Try to eat as much 'food' as possible to make the snake grow in length. Every food item you eat you gain a point, which is the main aim of the game.
 
 <img src="./assets/shot8.png" />
-Once it's game over you then have the option to play the game again.
+If you crash into your own body or the sides of the grid it will be game over and the option to play again will appear.
 
 ## Approach
-The first step of my approach was to create a basic grid of a width of 10. This was required so that the snake has a basic outline of where the limits are. The next step was to make the snake head move using the arrow keys. I found the best way to do this was to make a switch statement 
-- find a way for the food to generate
-- find different food
+The first step of my approach was to create a basic grid of a width of 10 squares. This was required so that the snake has a basic outline of where the limits are. The next step was to make the snakes head move using the arrow keys. I found the best way to do this was to make a switch statement defining the direction with the arrow keys. 
+
+Next was for the food to appear on the board and one the snake eats it, the food will then generate again at random, with a different image. Next 
+For the snake to increase in size I used the method of unshift, 
 - find a way that the snake gets longer when food is food eaten
 - score to go up when snake eats food
 
