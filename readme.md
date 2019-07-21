@@ -1,7 +1,7 @@
 # SEI-PROJECT 1 - SNAKE, The Lion King Edition
 
 ## Goal
-The goal was to create the game 'Snake' within a given time frame of 7 days using JavaScript. As you will see I have put my own spin on the game, and have added audio and images for the 'food'.
+The goal was to create the game 'Snake' within a given time frame of 7 days using JavaScript.
 
 ## Controls
 SNAKE movements:
@@ -26,16 +26,14 @@ Try to eat as much 'food' as possible to make the snake grow in length. Every fo
 If you crash into your own body or the sides of the grid it will be game over and the option to play again will appear.
 
 ## Approach
-The first step of my approach was to create a basic grid of a width of 10 squares. This was required so that the snake has a basic outline of where the limits are. The next step was to make the snakes head move using the arrow keys. I found the best way to do this was to make a switch statement defining the direction with the arrow keys. 
+The first step of my approach was to produce a classic game in which I could put my own spin on it. I then came up with the idea to create Snake but with a theme of The Lion King. Firstly I created a basic grid of a width of 10 squares. This was required so that the snake has a basic outline of where the limits are. The next step was to make the snakes head move using the arrow keys. I found the best way to do this was to make a switch statement defining the direction with the arrow keys. 
 
-Next was for the food to appear on the board and one the snake eats it, the food will then generate again at random, with a different image. Next 
-For the snake to increase in size I used the method of unshift, 
-- find a way that the snake gets longer when food is food eaten
-- score to go up when snake eats food
+Next was for the food to appear on the board and once the snake eats it, the food will then generate again at random with a different image. Next was for the snake to increase in size everytime it ate food. I used the method of unshift, which then increased the body of the snake.
+
 
 
 ## Challenges
-I found the approach on how to make the snake longer every time it eats the food. This took a few trial and errors until I found the best way was to slice
+I found the approach on how to make the snake longer every time it eats the food. This took a few trial and errors until I found the best way was to unshift.
 
 ## Wins
 - styling and audio really help put my own spin on the game, as it is still Snake but with a twist.
