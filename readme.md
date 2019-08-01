@@ -33,7 +33,7 @@ Next was for the food to appear on the board and once the snake eats it, the foo
 
 
 ## Challenges
-I found the approach on how to make the snake longer every time it eats the food. This took a few trial and errors until I found the best way was to unshift.
+I found the approach on how to make the snake longer every time it eats the food. This took a few trial and errors until I found the best method to use which was unshift.
 
 ## Wins
 - styling and audio really help put my own spin on the game, as it is still Snake but with a twist.
